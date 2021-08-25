@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import React, { Dispatch, SetStateAction } from "react";
 import Table from "../Table/Table";
 import { Row } from "../Table/Types";
@@ -25,32 +26,51 @@ const MasterDetail: React.FC<Props> = ({
   const classes = style();
 
   return (
-    <div style={{ display: "flex", width: "100%" }}>
+    <div
+      style={{ display: "flex", width: "100%", justifyContent: "space-evenly" }}
+    >
       {form && (
-        <div className={!table ? classes.root100 : classes.root50}>
-          <form>
+        <div className={classes.root}>
+          <form
+            style={{
+              width: "90%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <h3>Forma za filtriranje</h3>
             {elements.map((element: any) => {
-              console.log(element);
-
               return (
-                <div className={classes.input}>
-                  {React.createElement(element.value, null)}
+                <div key={element.id} className={classes.input}>
+                  {React.createElement(
+                    element.value,
+                    element.props && {
+                      ...element.props,
+                    }
+                  )}
                 </div>
               );
             })}
+            <Button
+              style={{ marginTop: "5%" }}
+              variant="contained"
+              color="primary"
+            >
+              Filtriraj
+            </Button>
           </form>
         </div>
       )}
       {table && (
-        <div className={!form ? classes.table100 : classes.table50}>
+        <div className={classes.table}>
           <Table
             submitForm={submitForm}
             setRows={setRows}
             columns={columns}
             rows={rows}
             height={`700px`}
-            width={`70%`}
+            width={`100%`}
           />
         </div>
       )}

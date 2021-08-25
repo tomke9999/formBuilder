@@ -39,7 +39,7 @@ const Proba: React.FC = () => {
   const [rows, setRows] = useState<Row[]>(newData);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <MasterDetail
         submitForm={submitForm}
         setRows={setRows}

@@ -6,6 +6,6 @@ export const odDoDateStyles = makeStyles({
   },
   textField2: {
     width: "45%",
-    marginLeft: "5%",
+    marginLeft: "10%",
   },
 });

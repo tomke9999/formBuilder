@@ -19,8 +19,6 @@ const DateSelect: React.FC<Props> = ({
   required = false,
   label,
 }) => {
-  console.log(value);
-
   return (
     <FormControl className={textFieldCSS}>
       <DatePicker
