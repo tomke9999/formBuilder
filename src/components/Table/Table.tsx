@@ -97,7 +97,7 @@ const Table: React.FC<Props> = ({
         }))
       );
     }
-  }, [editRow, tableColumn]);
+  }, [editRow, columns, tableColumn]);
 
   const requestSearch = (searchValue: any) => {
     setSearchText(searchValue);

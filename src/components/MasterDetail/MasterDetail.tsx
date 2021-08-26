@@ -1,8 +1,7 @@
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import React, { Dispatch, SetStateAction } from "react";
 import Table from "../Table/Table";
 import { Row } from "../Table/Types";
-import { style } from "./MasterDetailStyle";
 
 interface Props {
   elements: any[];
@@ -23,26 +22,15 @@ const MasterDetail: React.FC<Props> = ({
   setRows,
   submitForm,
 }) => {
-  const classes = style();
-
   return (
-    <div
-      style={{ display: "flex", width: "100%", justifyContent: "space-evenly" }}
-    >
+    <Grid container justifyContent="space-evenly">
       {form && (
-        <div className={classes.root}>
-          <form
-            style={{
-              width: "90%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+        <Grid item xs={3}>
+          <form>
             <h3>Forma za filtriranje</h3>
             {elements.map((element: any) => {
               return (
-                <div key={element.id} className={classes.input}>
+                <div key={element.id}>
                   {React.createElement(
                     element.value,
                     element.props && {
@@ -60,10 +48,10 @@ const MasterDetail: React.FC<Props> = ({
               Filtriraj
             </Button>
           </form>
-        </div>
+        </Grid>
       )}
       {table && (
-        <div className={classes.table}>
+        <Grid item xs={form ? 8 : 10}>
           <Table
             submitForm={submitForm}
             setRows={setRows}
@@ -72,9 +60,9 @@ const MasterDetail: React.FC<Props> = ({
             height={`700px`}
             width={`100%`}
           />
-        </div>
+        </Grid>
       )}
-    </div>
+    </Grid>
   );
 };
 
